@@ -1,0 +1,222 @@
+﻿@model GiftOfTheGivers.ViewModels.DonationViewModel
+
+@{
+    ViewData["Title"] = "Make a Donation";
+}
+
+<div class="container section">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="mb-4">
+
+                <div class="hero-eyebrow text-danger">
+                    SUPPORT RELIEF
+                </div>
+
+                <h1 class="section-heading mt-2">
+                    Make a donation
+                </h1>
+
+                <p class="section-description">
+                    Choose how you would like to support humanitarian
+                    relief. This prototype records your donation as a
+                    demonstration of the proposed workflow.
+                </p>
+
+            </div>
+
+            <form asp-action="Create"
+                  method="post"
+                  class="gotg-form">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <h5 class="mb-3">
+                    Donation type
+                </h5>
+
+                <div class="row g-3 mb-4">
+
+                    <div class="col-md-6">
+                        <input type="radio"
+                               class="btn-check"
+                               asp-for="DonationType"
+                               value="One Time"
+                               id="oneTime"
+                               checked />
+
+                        <label class="btn btn-outline-dark w-100 p-3"
+                               for="oneTime">
+
+                            One-time donation
+
+                        </label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="radio"
+                               class="btn-check"
+                               asp-for="DonationType"
+                               value="Recurring"
+                               id="recurring" />
+
+                        <label class="btn btn-outline-dark w-100 p-3"
+                               for="recurring">
+
+                            Recurring donation
+
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <label asp-for="Currency"
+                               class="form-label">
+                            Currency
+                        </label>
+
+                        <select asp-for="Currency"
+                                class="form-select">
+
+                            <option value="ZAR">
+                                ZAR — South African Rand
+                            </option>
+
+                            <option value="USD">
+                                USD — US Dollar
+                            </option>
+
+                            <option value="EUR">
+                                EUR — Euro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label asp-for="Amount"
+                               class="form-label">
+                            Amount
+                        </label>
+
+                        <input asp-for="Amount"
+                               class="form-control"
+                               placeholder="e.g. 500" />
+
+                        <span asp-validation-for="Amount"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-4">
+
+                    <label asp-for="Purpose"
+                           class="form-label">
+                        Donation purpose
+                    </label>
+
+                    <select asp-for="Purpose"
+                            class="form-select">
+
+                        <option value="General Relief">
+                            General Relief
+                        </option>
+
+                        <option value="Emergency Response">
+                            Emergency Response
+                        </option>
+
+                        <option value="Food Relief">
+                            Food Relief
+                        </option>
+
+                        <option value="Medical Assistance">
+                            Medical Assistance
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <hr class="my-4" />
+
+                <div class="form-check mb-3">
+
+                    <input asp-for="IsAnonymous"
+                           class="form-check-input" />
+
+                    <label asp-for="IsAnonymous"
+                           class="form-check-label">
+
+                        Make this donation anonymous
+
+                    </label>
+
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <label asp-for="DonorName"
+                               class="form-label">
+                            Name
+                        </label>
+
+                        <input asp-for="DonorName"
+                               class="form-control"
+                               placeholder="Your name" />
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label asp-for="DonorEmail"
+                               class="form-label">
+                            Email
+                        </label>
+
+                        <input asp-for="DonorEmail"
+                               class="form-control"
+                               placeholder="you@example.com" />
+
+                    </div>
+
+                </div>
+
+                <div class="alert alert-secondary mt-4">
+                    <strong>Prototype notice:</strong>
+                    No real payment will be processed. The system
+                    creates a demonstration donation record.
+                </div>
+
+                <button type="submit"
+                        class="btn btn-gotg btn-lg w-100 mt-3">
+
+                    Continue with donation
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

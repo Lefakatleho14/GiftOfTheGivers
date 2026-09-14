@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<div class="container">
+
+    <div class="dashboard-header">
+
+        <div class="hero-eyebrow text-danger">
+            RELIEF OPERATIONS
+        </div>
+
+        <h1>
+            Employee dashboard
+        </h1>
+
+        <p class="text-muted mb-0">
+            Monitor donations, volunteers and humanitarian
+            activity from one place.
+        </p>
+
+    </div>
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Donations
+                </div>
+
+                <div class="stat-value">
+                    R @ViewBag.TotalDonations.ToString("N0")
+                </div>
+
+                <div class="small status-success mt-2">
+                    Total recorded
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Donation records
+                </div>
+
+                <div class="stat-value">
+                    @ViewBag.DonationCount
+                </div>
+
+                <div class="small text-muted mt-2">
+                    Recorded donations
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Volunteers
+                </div>
+
+                <div class="stat-value">
+                    @ViewBag.VolunteerCount
+                </div>
+
+                <div class="small text-muted mt-2">
+                    Applications received
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Relief updates
+                </div>
+
+                <div class="stat-value">
+                    @ViewBag.ReliefUpdateCount
+                </div>
+
+                <div class="small text-muted mt-2">
+                    Published updates
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-8">
+
+            <div class="gotg-card">
+
+                <div class="d-flex justify-content-between
+                            align-items-center mb-4">
+
+                    <div>
+                        <h5 class="mb-1">
+                            Recent volunteer sign-ups
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Latest people who registered their interest.
+                        </p>
+                    </div>
+
+                    <a asp-action="Volunteers"
+                       class="btn btn-outline-dark btn-sm">
+
+                        View all
+
+                    </a>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle">
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Skills</th>
+                                <th>Availability</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var volunteer
+                                                        in ViewBag.RecentVolunteers)
+                            {
+                                <tr>
+
+                                    <td class="fw-semibold">
+                                        @volunteer.Name
+                                    </td>
+
+                                    <td>
+                                        @volunteer.Skills
+                                    </td>
+
+                                    <td>
+                                        @volunteer.Availability
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="gotg-card">
+
+                <h5>
+                    Quick actions
+                </h5>
+
+                <p class="text-muted">
+                    Common employee tasks.
+                </p>
+
+                <div class="d-grid gap-2">
+
+                    <a asp-action="Volunteers"
+                       class="btn btn-gotg">
+
+                        View volunteer sign-ups
+
+                    </a>
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="btn btn-outline-dark">
+
+                        View public site
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

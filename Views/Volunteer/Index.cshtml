@@ -1,0 +1,145 @@
+﻿@model GiftOfTheGivers.ViewModels.VolunteerViewModel
+
+@{
+    ViewData["Title"] = "Volunteer";
+}
+
+<div class="container section">
+
+    <div class="row g-5 align-items-start">
+
+        <div class="col-lg-5">
+
+            <div class="hero-eyebrow text-danger">
+                VOLUNTEER
+            </div>
+
+            <h1 class="section-heading mt-2">
+                Give your time where it matters.
+            </h1>
+
+            <p class="section-description mt-3">
+                Tell us about your skills and availability.
+                This prototype records your interest so that
+                employees can review volunteer submissions.
+            </p>
+
+        </div>
+
+        <div class="col-lg-7">
+
+            <form asp-action="Index"
+                  method="post"
+                  class="gotg-form">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                        Full name
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control"
+                           placeholder="Enter your full name" />
+
+                    <span asp-validation-for="Name"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Email"
+                           class="form-label">
+                        Email address
+                    </label>
+
+                    <input asp-for="Email"
+                           class="form-control"
+                           placeholder="you@example.com" />
+
+                    <span asp-validation-for="Email"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Skills"
+                           class="form-label">
+                        Skills
+                    </label>
+
+                    <textarea asp-for="Skills"
+                              class="form-control"
+                              rows="4"
+                              placeholder="e.g. logistics, driving, first aid, administration"></textarea>
+
+                    <span asp-validation-for="Skills"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Availability"
+                           class="form-label">
+                        Availability
+                    </label>
+
+                    <select asp-for="Availability"
+                            class="form-select">
+
+                        <option value="">
+                            Select availability
+                        </option>
+
+                        <option>
+                            Weekdays
+                        </option>
+
+                        <option>
+                            Weekends
+                        </option>
+
+                        <option>
+                            Evenings
+                        </option>
+
+                        <option>
+                            Emergency response
+                        </option>
+
+                        <option>
+                            Flexible
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Availability"
+                          class="text-danger"></span>
+
+                </div>
+
+                <button class="btn btn-gotg btn-lg w-100"
+                        type="submit">
+
+                    Submit volunteer interest
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Volunteer Interest Submitted";
+}
+
+<div class="container section">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="gotg-card text-center">
+
+                <!-- Success Icon -->
+                <div class="volunteer-success-icon">
+                    ✓
+                </div>
+
+                <div class="hero-eyebrow text-success mt-4">
+                    THANK YOU
+                </div>
+
+                <h1 class="section-heading mt-2">
+                    Your volunteer interest has been received
+                </h1>
+
+                <p class="section-description mx-auto">
+                    Thank you for expressing your interest in supporting
+                    humanitarian relief. Your information has been recorded
+                    successfully.
+                </p>
+
+                <div class="alert alert-light border text-start mt-4">
+
+                    <strong>What happens next?</strong>
+
+                    <p class="mb-0 mt-2">
+                        This prototype records your volunteer application
+                        so that an employee can review the submitted
+                        information.
+                    </p>
+
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row
+                            justify-content-center gap-3 mt-4">
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="btn btn-gotg">
+
+                        Return Home
+
+                    </a>
+
+                    <a asp-controller="Volunteer"
+                       asp-action="Index"
+                       class="btn btn-outline-dark">
+
+                        Submit Another Interest
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .volunteer-success-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: #3A8065;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+</style>

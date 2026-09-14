@@ -1,0 +1,143 @@
+﻿@model GiftOfTheGivers.Models.Donation
+
+@{
+    ViewData["Title"] = "Donation Confirmation";
+}
+
+<div class="container section">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="gotg-card text-center">
+
+                <div class="mb-4">
+
+                    <div style="
+                        width:64px;
+                        height:64px;
+                        border-radius:50%;
+                        background:#3A8065;
+                        color:white;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        margin:auto;
+                        font-size:30px;">
+                        ✓
+                    </div>
+
+                </div>
+
+                <h1 class="mb-3">
+                    Donation recorded
+                </h1>
+
+                <p class="text-muted">
+                    Thank you for supporting humanitarian relief.
+                </p>
+
+                <div class="row g-3 text-start mt-4">
+
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-label">
+                                Amount
+                            </div>
+
+                            <div class="stat-value">
+                                @Model.Currency
+                                @Model.Amount.ToString("N2")
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-label">
+                                Reference
+                            </div>
+
+                            <div class="mt-2 fw-bold">
+                                @Model.Reference
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="certificate mt-5">
+
+                    <img src="~/images/gotg-logo.svg"
+                         alt="Gift of the Givers"
+                         style="max-width:250px;" />
+
+                    <h2 class="mt-4">
+                        Certificate of Appreciation
+                    </h2>
+
+                    <p>
+                        This certificate acknowledges the support
+                        provided towards humanitarian relief.
+                    </p>
+
+                    <h3>
+                        @Model.Currency
+                        @Model.Amount.ToString("N2")
+                    </h3>
+
+                    <p>
+                        Donation Reference:
+                        <strong>@Model.Reference</strong>
+                    </p>
+
+                    <p>
+                        @Model.CreatedAt.ToLocalTime()
+                    </p>
+
+                </div>
+
+                <button onclick="window.print()"
+                        class="btn btn-outline-dark mt-4">
+
+                    Print / Save Certificate
+
+                </button>
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="btn btn-gotg mt-4">
+
+                    Return home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .certificate {
+        border: 2px solid #DDE2DF;
+        padding: 50px 30px;
+        background: #FAFBFA;
+    }
+
+    @@media print {
+        .gotg-navbar,
+        .gotg-footer,
+        button,
+        .btn {
+            display: none !important;
+        }
+
+        .certificate {
+            border: 2px solid #17232F;
+        }
+    }
+</style>

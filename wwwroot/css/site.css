@@ -1,0 +1,591 @@
+:root {
+    --gotg-green: #087443;
+    --gotg-green-dark: #075a35;
+    --gotg-green-light: #eaf5ef;
+    --gotg-gold: #e4b64a;
+    --gotg-slate: #16231f;
+    --gotg-text: #17201c;
+    --gotg-muted: #66736d;
+    --gotg-background: #f7f8f5;
+    --gotg-white: #ffffff;
+    --gotg-border: #dfe6e1;
+    --gotg-radius: 14px;
+}
+
+
+/* =========================
+   BASE
+========================= */
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    color: var(--gotg-text);
+    background: var(--gotg-background);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.65;
+}
+
+a {
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--gotg-text);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: var(--gotg-muted);
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.gotg-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--gotg-border);
+    padding: 0.9rem 0;
+}
+
+.gotg-brand {
+    display: flex;
+    align-items: center;
+}
+
+.gotg-logo {
+    width: auto;
+    height: 52px;
+    max-width: 220px;
+    object-fit: contain;
+}
+
+.navbar-nav {
+    gap: 0.35rem;
+}
+
+    .navbar-nav .nav-link {
+        color: #35423c;
+        font-weight: 600;
+        padding: 0.65rem 0.9rem !important;
+        border-radius: 8px;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: var(--gotg-green);
+            background: var(--gotg-green-light);
+        }
+
+.gotg-auth {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+    .gotg-auth .btn {
+        border-radius: 8px;
+    }
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-gotg-primary {
+    background: var(--gotg-green);
+    border: 1px solid var(--gotg-green);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9px;
+}
+
+    .btn-gotg-primary:hover,
+    .btn-gotg-primary:focus {
+        background: var(--gotg-green-dark);
+        border-color: var(--gotg-green-dark);
+        color: white;
+    }
+
+.btn-gotg-outline {
+    background: transparent;
+    border: 1px solid var(--gotg-green);
+    color: var(--gotg-green);
+    font-weight: 700;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9px;
+}
+
+    .btn-gotg-outline:hover,
+    .btn-gotg-outline:focus {
+        background: var(--gotg-green-light);
+        color: var(--gotg-green-dark);
+    }
+
+
+/* =========================
+   HERO
+========================= */
+
+.gotg-hero {
+    background: linear-gradient( 90deg, #f7f8f5 0%, #f7f8f5 58%, #eaf5ef 58%, #eaf5ef 100% );
+    border-bottom: 1px solid var(--gotg-border);
+}
+
+.min-vh-75 {
+    min-height: 650px;
+}
+
+.hero-eyebrow {
+    color: var(--gotg-green);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    max-width: 760px;
+    font-size: clamp(2.7rem, 5vw, 4.8rem);
+    line-height: 1.02;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text {
+    max-width: 650px;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.hero-panel {
+    background: var(--gotg-slate);
+    color: white;
+    border-radius: 18px;
+    padding: 2.5rem;
+    box-shadow: 0 18px 45px rgba(22, 35, 31, 0.12);
+}
+
+.hero-panel-label {
+    color: var(--gotg-gold);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.25rem;
+}
+
+.hero-panel h2 {
+    color: white;
+    font-size: 2rem;
+}
+
+.hero-panel p {
+    color: #d3ddd8;
+}
+
+.hero-line {
+    width: 50px;
+    height: 3px;
+    background: var(--gotg-gold);
+    margin: 1.5rem 0;
+}
+
+.hero-panel span:last-child {
+    color: #dce7e2;
+    font-weight: 600;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    padding: 6rem 0;
+}
+
+.section-light {
+    background: #ffffff;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin-bottom: 3rem;
+}
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-top: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-heading p {
+        font-size: 1.05rem;
+    }
+
+.section-kicker {
+    color: var(--gotg-green);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.section-kicker-light {
+    color: var(--gotg-gold);
+}
+
+
+/* =========================
+   FOCUS ITEMS
+========================= */
+
+.focus-item {
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid var(--gotg-border);
+    border-radius: var(--gotg-radius);
+    padding: 2rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .focus-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(22, 35, 31, 0.08);
+    }
+
+.focus-number {
+    display: block;
+    color: var(--gotg-green);
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+}
+
+.focus-item h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.focus-item p {
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   IMPACT
+========================= */
+
+.gotg-impact {
+    background: var(--gotg-slate);
+}
+
+.impact-title {
+    color: white;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.impact-text {
+    color: #cdd9d3;
+}
+
+.impact-stat {
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding-top: 1.5rem;
+}
+
+    .impact-stat strong {
+        display: block;
+        color: var(--gotg-gold);
+        font-size: 2.4rem;
+        line-height: 1;
+        margin-bottom: 0.6rem;
+    }
+
+    .impact-stat span {
+        color: #d6e0dc;
+    }
+
+
+/* =========================
+   CTA
+========================= */
+
+.gotg-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    background: white;
+    border: 1px solid var(--gotg-border);
+    border-radius: 18px;
+    padding: 3rem;
+}
+
+    .gotg-cta h2 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .gotg-cta p {
+        margin-bottom: 0;
+    }
+
+.cta-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: var(--gotg-slate);
+    padding: 6rem 0;
+}
+
+    .page-header h1 {
+        max-width: 850px;
+        color: white;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-top: 0.6rem;
+    }
+
+    .page-header p {
+        max-width: 680px;
+        color: #d1ddd7;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+    }
+
+
+/* =========================
+   INFO PANEL
+========================= */
+
+.info-panel {
+    background: white;
+    border: 1px solid var(--gotg-border);
+    border-radius: var(--gotg-radius);
+    padding: 2rem;
+}
+
+.info-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--gotg-border);
+}
+
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+    .info-row strong {
+        color: var(--gotg-green);
+        font-size: 0.8rem;
+    }
+
+    .info-row span {
+        font-weight: 600;
+    }
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-details {
+    margin-top: 2rem;
+}
+
+.contact-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--gotg-border);
+}
+
+    .contact-detail strong {
+        margin-bottom: 0.25rem;
+    }
+
+    .contact-detail span {
+        color: var(--gotg-muted);
+    }
+
+.form-panel {
+    background: white;
+    border: 1px solid var(--gotg-border);
+    border-radius: var(--gotg-radius);
+    padding: 2.5rem;
+}
+
+    .form-panel h2 {
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+.form-control {
+    border: 1px solid #cfd8d3;
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+}
+
+    .form-control:focus {
+        border-color: var(--gotg-green);
+        box-shadow: 0 0 0 3px rgba(8, 116, 67, 0.12);
+    }
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.gotg-footer {
+    background: var(--gotg-slate);
+    color: white;
+    padding: 4rem 0 1.5rem;
+}
+
+.footer-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.gotg-footer p {
+    max-width: 500px;
+    color: #cbd7d2;
+}
+
+.gotg-footer h6 {
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .footer-links li {
+        margin-bottom: 0.65rem;
+    }
+
+    .footer-links a {
+        color: #cbd7d2;
+        text-decoration: none;
+    }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    color: #9eada6;
+    font-size: 0.85rem;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991.98px) {
+
+    .gotg-auth {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--gotg-border);
+    }
+
+    .gotg-hero {
+        background: #f7f8f5;
+    }
+
+    .min-vh-75 {
+        min-height: auto;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .hero-panel {
+        max-width: 600px;
+    }
+
+    .gotg-cta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.7rem;
+    }
+
+    .hero-text {
+        font-size: 1.05rem;
+    }
+
+    .hero-panel {
+        padding: 1.75rem;
+    }
+
+    .gotg-cta {
+        padding: 2rem;
+    }
+
+    .cta-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+        .cta-actions .btn {
+            width: 100%;
+        }
+
+    .form-panel {
+        padding: 1.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}

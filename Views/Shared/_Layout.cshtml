@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - Gift of the Givers
+    </title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg gotg-navbar">
+
+            <div class="container">
+
+                <!-- Brand / Logo -->
+                <a class="navbar-brand gotg-brand"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <img src="~/images/gift-of-the-givers-logo.png"
+                         alt="Gift of the Givers"
+                         class="gotg-logo" />
+
+                </a>
+
+
+                <!-- Mobile Navigation Button -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavigation"
+                        aria-controls="mainNavigation"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+
+                <!-- Main Navigation -->
+                <div class="collapse navbar-collapse"
+                     id="mainNavigation">
+
+                    <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
+
+                        <!-- Home -->
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Index">
+
+                                Home
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- About -->
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="About">
+
+                                About
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- Donate -->
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Donations"
+                               asp-action="Create">
+
+                                Donate
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- Volunteer -->
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Volunteer"
+                               asp-action="Index">
+
+                                Volunteer
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- Contact -->
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Contact">
+
+                                Contact
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+
+                    <!-- Authentication -->
+                    <div class="gotg-auth">
+
+                        <partial name="_LoginPartial" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="gotg-footer">
+
+        <div class="container">
+
+            <div class="row g-5">
+
+                <!-- Footer Brand -->
+                <div class="col-lg-5">
+
+                    <div class="footer-brand">
+                        Gift of the Givers
+                    </div>
+
+                    <p>
+                        Supporting humanitarian relief through donations,
+                        volunteers and coordinated response.
+                    </p>
+
+                </div>
+
+
+                <!-- Footer Navigation -->
+                <div class="col-sm-6 col-lg-3">
+
+                    <h6>
+                        Explore
+                    </h6>
+
+                    <ul class="footer-links">
+
+                        <li>
+
+                            <a asp-controller="Home"
+                               asp-action="Index">
+
+                                Home
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a asp-controller="Home"
+                               asp-action="About">
+
+                                About
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a asp-controller="Donations"
+                               asp-action="Create">
+
+                                Donate
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a asp-controller="Volunteer"
+                               asp-action="Index">
+
+                                Volunteer
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a asp-controller="Home"
+                               asp-action="Contact">
+
+                                Contact
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Prototype Information -->
+                <div class="col-sm-6 col-lg-4">
+
+                    <h6>
+                        Prototype
+                    </h6>
+
+                    <p>
+                        A relief management prototype demonstrating
+                        donation, volunteer and employee functionality.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+
+                <span>
+                    © @DateTime.Now.Year Gift of the Givers Relief Management System
+                </span>
+
+                <span>
+                    Prototype
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
