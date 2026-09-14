@@ -8,110 +8,205 @@
 
     <div class="row justify-content-center">
 
-        <div class="col-lg-8">
+        <div class="col-lg-9">
 
             <div class="gotg-card text-center">
 
-                <div class="mb-4">
+                <!-- Success -->
 
-                    <div style="
-                        width:64px;
-                        height:64px;
-                        border-radius:50%;
-                        background:#3A8065;
-                        color:white;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        margin:auto;
-                        font-size:30px;">
-                        ✓
-                    </div>
-
+                <div class="donation-success-icon">
+                    ✓
                 </div>
 
-                <h1 class="mb-3">
-                    Donation recorded
+
+                <div class="hero-eyebrow text-success mt-4">
+                    DONATION RECORDED
+                </div>
+
+
+                <h1 class="section-heading mt-2">
+                    Thank you for your support
                 </h1>
 
-                <p class="text-muted">
-                    Thank you for supporting humanitarian relief.
+
+                <p class="section-description mx-auto">
+                    Your demonstration donation has been recorded
+                    successfully.
                 </p>
+
+
+                <!-- Donation Summary -->
 
                 <div class="row g-3 text-start mt-4">
 
                     <div class="col-md-6">
+
                         <div class="stat-card">
+
                             <div class="stat-label">
-                                Amount
+                                AMOUNT
                             </div>
 
                             <div class="stat-value">
+
                                 @Model.Currency
                                 @Model.Amount.ToString("N2")
+
                             </div>
+
                         </div>
+
                     </div>
 
+
                     <div class="col-md-6">
+
                         <div class="stat-card">
+
                             <div class="stat-label">
-                                Reference
+                                REFERENCE
                             </div>
 
                             <div class="mt-2 fw-bold">
+
                                 @Model.Reference
+
                             </div>
+
                         </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="stat-card">
+
+                            <div class="stat-label">
+                                DONATION TYPE
+                            </div>
+
+                            <div class="mt-2 fw-bold">
+
+                                @Model.DonationType
+
+                                @if (Model.DonationType == "Recurring" &&
+                                                                !string.IsNullOrWhiteSpace(
+                                                                Model.DonationFrequency))
+                                {
+                                    <span>
+                                        — @Model.DonationFrequency
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="stat-card">
+
+                            <div class="stat-label">
+                                PURPOSE
+                            </div>
+
+                            <div class="mt-2 fw-bold">
+
+                                @Model.Purpose
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
+
+                <!-- Certificate -->
+
                 <div class="certificate mt-5">
 
-                    <img src="~/images/gotg-logo.svg"
+                    <img src="~/images/gift-of-the-givers-logo.png"
                          alt="Gift of the Givers"
-                         style="max-width:250px;" />
+                         class="certificate-logo" />
+
+
+                    <div class="certificate-label">
+                        CERTIFICATE OF APPRECIATION
+                    </div>
+
 
                     <h2 class="mt-4">
-                        Certificate of Appreciation
+                        Thank you for supporting
+                        humanitarian relief
                     </h2>
 
-                    <p>
+
+                    <p class="certificate-text">
+
                         This certificate acknowledges the support
                         provided towards humanitarian relief.
+
                     </p>
 
-                    <h3>
+
+                    <div class="certificate-amount">
+
                         @Model.Currency
                         @Model.Amount.ToString("N2")
-                    </h3>
 
-                    <p>
+                    </div>
+
+
+                    <p class="mt-4">
+
                         Donation Reference:
-                        <strong>@Model.Reference</strong>
+
+                        <strong>
+                            @Model.Reference
+                        </strong>
+
                     </p>
 
-                    <p>
+
+                    <p class="text-muted">
+
                         @Model.CreatedAt.ToLocalTime()
+
                     </p>
 
                 </div>
 
-                <button onclick="window.print()"
-                        class="btn btn-outline-dark mt-4">
 
-                    Print / Save Certificate
+                <!-- Actions -->
 
-                </button>
+                <div class="d-flex flex-column
+                            flex-sm-row
+                            justify-content-center
+                            gap-3 mt-4">
 
-                <a asp-controller="Home"
-                   asp-action="Index"
-                   class="btn btn-gotg mt-4">
+                    <button onclick="window.print()"
+                            class="btn btn-gotg">
 
-                    Return home
+                        Print / Save Certificate
 
-                </a>
+                    </button>
+
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="btn btn-outline-dark">
+
+                        Return Home
+
+                    </a>
+
+                </div>
 
             </div>
 
@@ -121,14 +216,57 @@
 
 </div>
 
+
 <style>
+
+    .donation-success-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: #3A8065;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        font-size: 36px;
+        font-weight: 600;
+    }
+
     .certificate {
         border: 2px solid #DDE2DF;
-        padding: 50px 30px;
+        padding: 55px 35px;
         background: #FAFBFA;
     }
 
+    .certificate-logo {
+        max-width: 250px;
+        max-height: 100px;
+        object-fit: contain;
+    }
+
+    .certificate-label {
+        margin-top: 30px;
+        letter-spacing: 0.15em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #3A8065;
+    }
+
+    .certificate-text {
+        max-width: 600px;
+        margin: 20px auto;
+        color: #5E6B75;
+    }
+
+    .certificate-amount {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-top: 25px;
+    }
+
     @@media print {
+
         .gotg-navbar,
         .gotg-footer,
         button,
@@ -136,8 +274,14 @@
             display: none !important;
         }
 
+        body {
+            background: white;
+        }
+
         .certificate {
             border: 2px solid #17232F;
+            margin-top: 20px;
         }
     }
+
 </style>

@@ -14,10 +14,14 @@ namespace GiftOfTheGivers.ViewModels
         [Required]
         public string DonationType { get; set; } = "One Time";
 
-        public string? Purpose { get; set; }
+        public string? DonationFrequency { get; set; }
+
+        [Required]
+        public string Purpose { get; set; } = "General Relief";
 
         public bool IsAnonymous { get; set; }
 
+        [StringLength(150)]
         public string? DonorName { get; set; }
 
         [EmailAddress]

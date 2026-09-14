@@ -30,6 +30,14 @@ namespace GiftOfTheGivers.Controllers
         public async Task<IActionResult> Create(
             DonationViewModel model)
         {
+            if (model.DonationType == "Recurring" &&
+                string.IsNullOrWhiteSpace(model.DonationFrequency))
+            {
+                ModelState.AddModelError(
+                    nameof(model.DonationFrequency),
+                    "Please select a recurring donation frequency.");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -40,12 +48,19 @@ namespace GiftOfTheGivers.Controllers
                 Amount = model.Amount,
                 Currency = model.Currency,
                 DonationType = model.DonationType,
+                DonationFrequency =
+                    model.DonationType == "Recurring"
+                        ? model.DonationFrequency
+                        : null,
                 Purpose = model.Purpose,
                 IsAnonymous = model.IsAnonymous,
                 DonorName = model.IsAnonymous
                     ? "Anonymous"
                     : model.DonorName,
-                DonorEmail = model.DonorEmail
+                DonorEmail = model.DonorEmail,
+                DonationStatus = "Recorded",
+                Reference = GenerateReference(),
+                CreatedAt = DateTime.UtcNow
             };
 
             if (User.Identity?.IsAuthenticated == true)
@@ -85,6 +100,13 @@ namespace GiftOfTheGivers.Controllers
             }
 
             return View(donation);
+        }
+
+        private static string GenerateReference()
+        {
+            return $"GOTG-{DateTime.UtcNow:yyyyMMddHHmmss}-{Guid.NewGuid()
+                .ToString("N")[..6]
+                .ToUpper()}";
         }
     }
 }

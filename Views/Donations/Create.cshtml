@@ -28,12 +28,17 @@
 
             </div>
 
+
             <form asp-action="Create"
                   method="post"
                   class="gotg-form">
 
                 <div asp-validation-summary="ModelOnly"
-                     class="text-danger mb-3"></div>
+                     class="text-danger mb-4">
+                </div>
+
+
+                <!-- Donation Type -->
 
                 <h5 class="mb-3">
                     Donation type
@@ -42,6 +47,7 @@
                 <div class="row g-3 mb-4">
 
                     <div class="col-md-6">
+
                         <input type="radio"
                                class="btn-check"
                                asp-for="DonationType"
@@ -55,9 +61,12 @@
                             One-time donation
 
                         </label>
+
                     </div>
 
+
                     <div class="col-md-6">
+
                         <input type="radio"
                                class="btn-check"
                                asp-for="DonationType"
@@ -70,9 +79,54 @@
                             Recurring donation
 
                         </label>
+
                     </div>
 
                 </div>
+
+
+                <!-- Recurring Frequency -->
+
+                <div id="frequencySection"
+                     class="mb-4"
+                     style="display:none;">
+
+                    <label asp-for="DonationFrequency"
+                           class="form-label">
+
+                        Recurring frequency
+
+                    </label>
+
+                    <select asp-for="DonationFrequency"
+                            class="form-select">
+
+                        <option value="">
+                            Select frequency
+                        </option>
+
+                        <option value="Monthly">
+                            Monthly
+                        </option>
+
+                        <option value="Quarterly">
+                            Quarterly
+                        </option>
+
+                        <option value="Annually">
+                            Annually
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="DonationFrequency"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- Amount -->
 
                 <div class="row g-3">
 
@@ -80,7 +134,9 @@
 
                         <label asp-for="Currency"
                                class="form-label">
+
                             Currency
+
                         </label>
 
                         <select asp-for="Currency"
@@ -102,29 +158,41 @@
 
                     </div>
 
+
                     <div class="col-md-6">
 
                         <label asp-for="Amount"
                                class="form-label">
+
                             Amount
+
                         </label>
 
                         <input asp-for="Amount"
                                class="form-control"
+                               type="number"
+                               min="1"
+                               step="0.01"
                                placeholder="e.g. 500" />
 
                         <span asp-validation-for="Amount"
-                              class="text-danger"></span>
+                              class="text-danger">
+                        </span>
 
                     </div>
 
                 </div>
 
+
+                <!-- Purpose -->
+
                 <div class="mt-4">
 
                     <label asp-for="Purpose"
                            class="form-label">
+
                         Donation purpose
+
                     </label>
 
                     <select asp-for="Purpose"
@@ -150,7 +218,11 @@
 
                 </div>
 
+
                 <hr class="my-4" />
+
+
+                <!-- Anonymous -->
 
                 <div class="form-check mb-3">
 
@@ -166,13 +238,18 @@
 
                 </div>
 
+
+                <!-- Donor Details -->
+
                 <div class="row g-3">
 
                     <div class="col-md-6">
 
                         <label asp-for="DonorName"
                                class="form-label">
+
                             Name
+
                         </label>
 
                         <input asp-for="DonorName"
@@ -181,26 +258,41 @@
 
                     </div>
 
+
                     <div class="col-md-6">
 
                         <label asp-for="DonorEmail"
                                class="form-label">
+
                             Email
+
                         </label>
 
                         <input asp-for="DonorEmail"
                                class="form-control"
                                placeholder="you@example.com" />
 
+                        <span asp-validation-for="DonorEmail"
+                              class="text-danger">
+                        </span>
+
                     </div>
 
                 </div>
 
+
+                <!-- Prototype Notice -->
+
                 <div class="alert alert-secondary mt-4">
+
                     <strong>Prototype notice:</strong>
-                    No real payment will be processed. The system
-                    creates a demonstration donation record.
+
+                    No real payment will be processed.
+                    The system creates a demonstration donation
+                    record and certificate.
+
                 </div>
+
 
                 <button type="submit"
                         class="btn btn-gotg btn-lg w-100 mt-3">
@@ -217,6 +309,46 @@
 
 </div>
 
+
 @section Scripts {
+
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const oneTime =
+            document.getElementById("oneTime");
+
+        const recurring =
+            document.getElementById("recurring");
+
+        const frequencySection =
+            document.getElementById("frequencySection");
+
+        function updateFrequencyVisibility() {
+
+            if (recurring.checked) {
+
+                frequencySection.style.display = "block";
+
+            } else {
+
+                frequencySection.style.display = "none";
+
+            }
+        }
+
+        oneTime.addEventListener(
+            "change",
+            updateFrequencyVisibility
+        );
+
+        recurring.addEventListener(
+            "change",
+            updateFrequencyVisibility
+        );
+
+        updateFrequencyVisibility();
+
+    </script>
 }
