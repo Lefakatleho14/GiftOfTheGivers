@@ -36,7 +36,9 @@ namespace GiftOfTheGivers.Controllers
                 Name = model.Name,
                 Email = model.Email,
                 Skills = model.Skills,
-                Availability = model.Availability
+                Availability = model.Availability,
+                Status = "Pending",
+                SubmittedAt = DateTime.UtcNow
             };
 
             _context.VolunteerApplications.Add(application);
@@ -47,6 +49,7 @@ namespace GiftOfTheGivers.Controllers
                 nameof(Success));
         }
 
+        [HttpGet]
         public IActionResult Success()
         {
             return View();

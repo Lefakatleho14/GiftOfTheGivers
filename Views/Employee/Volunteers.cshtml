@@ -1,0 +1,238 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.VolunteerApplication>
+
+@{
+    ViewData["Title"] = "Volunteer Applications";
+}
+
+<div class="container section">
+
+    <div class="d-flex flex-column flex-md-row
+                justify-content-between
+                align-items-md-end gap-3 mb-5">
+
+        <div>
+
+            <div class="hero-eyebrow text-success">
+                COMMUNITY SUPPORT
+            </div>
+
+            <h1 class="section-heading mt-2">
+                Volunteer applications
+            </h1>
+
+            <p class="section-description mb-0">
+                Review people who have expressed interest in
+                supporting humanitarian relief.
+            </p>
+
+        </div>
+
+        <div>
+
+            <a asp-controller="Employee"
+               asp-action="Index"
+               class="btn btn-outline-dark">
+
+                Back to Employee Portal
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="gotg-card text-center">
+
+            <h3>
+                No volunteer applications
+            </h3>
+
+            <p class="text-muted mb-0">
+                No volunteer interest has been submitted yet.
+            </p>
+
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var application in Model)
+            {
+                <div class="col-lg-6">
+
+                    <div class="gotg-card h-100">
+
+                        <div class="d-flex justify-content-between
+                                            align-items-start gap-3">
+
+                            <div>
+
+                                <div class="stat-label">
+                                    VOLUNTEER
+                                </div>
+
+                                <h3 class="mt-2">
+                                    @application.Name
+                                </h3>
+
+                            </div>
+
+
+                            @if (application.Status == "Pending")
+                            {
+                                <span class="badge bg-warning text-dark">
+                                    Pending
+                                </span>
+                            }
+                            else if (application.Status == "Reviewed")
+                            {
+                                <span class="badge bg-secondary">
+                                    Reviewed
+                                </span>
+                            }
+                            else if (application.Status == "Contacted")
+                            {
+                                <span class="badge bg-info text-dark">
+                                    Contacted
+                                </span>
+                            }
+                            else if (application.Status == "Accepted")
+                            {
+                                <span class="badge bg-success">
+                                    Accepted
+                                </span>
+                            }
+                            else if (application.Status == "Declined")
+                            {
+                                <span class="badge bg-danger">
+                                    Declined
+                                </span>
+                            }
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <div class="stat-label">
+                                EMAIL
+                            </div>
+
+                            <p class="mb-0">
+                                @application.Email
+                            </p>
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <div class="stat-label">
+                                SKILLS
+                            </div>
+
+                            <p class="mb-0 text-muted">
+                                @application.Skills
+                            </p>
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <div class="stat-label">
+                                AVAILABILITY
+                            </div>
+
+                            <p class="mb-0 text-muted">
+                                @application.Availability
+                            </p>
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <div class="stat-label">
+                                SUBMITTED
+                            </div>
+
+                            <p class="mb-0 text-muted">
+                                @application.SubmittedAt.ToLocalTime()
+                            </p>
+
+                        </div>
+
+
+                        <hr class="my-4" />
+
+
+                        <form asp-controller="Employee"
+                              asp-action="UpdateVolunteerStatus"
+                              method="post">
+
+                            @Html.AntiForgeryToken()
+
+                            <input type="hidden"
+                                   name="id"
+                                   value="@application.Id" />
+
+                            <label class="form-label">
+                                Application status
+                            </label>
+
+                            <div class="d-flex gap-2">
+
+                                <select name="status"
+                                        class="form-select">
+
+                                    <option value="Pending"
+                                            selected="@(application.Status == "Pending")">
+                                        Pending
+                                    </option>
+
+                                    <option value="Reviewed"
+                                            selected="@(application.Status == "Reviewed")">
+                                        Reviewed
+                                    </option>
+
+                                    <option value="Contacted"
+                                            selected="@(application.Status == "Contacted")">
+                                        Contacted
+                                    </option>
+
+                                    <option value="Accepted"
+                                            selected="@(application.Status == "Accepted")">
+                                        Accepted
+                                    </option>
+
+                                    <option value="Declined"
+                                            selected="@(application.Status == "Declined")">
+                                        Declined
+                                    </option>
+
+                                </select>
+
+                                <button type="submit"
+                                        class="btn btn-gotg">
+
+                                    Update
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+
+</div>
