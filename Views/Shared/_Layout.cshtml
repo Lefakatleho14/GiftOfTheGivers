@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using GiftOfTheGivers.Models
+
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -130,6 +135,23 @@
 
                         </li>
 
+
+                        <!-- Employee Portal -->
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Employee"
+                                   asp-action="Index">
+
+                                    Employee Portal
+
+                                </a>
+
+                            </li>
+                        }
+
                     </ul>
 
 
@@ -188,6 +210,7 @@
 
                     <ul class="footer-links">
 
+                        <!-- Home -->
                         <li>
 
                             <a asp-controller="Home"
@@ -200,6 +223,7 @@
                         </li>
 
 
+                        <!-- About -->
                         <li>
 
                             <a asp-controller="Home"
@@ -212,6 +236,7 @@
                         </li>
 
 
+                        <!-- Donate -->
                         <li>
 
                             <a asp-controller="Donations"
@@ -224,6 +249,7 @@
                         </li>
 
 
+                        <!-- Volunteer -->
                         <li>
 
                             <a asp-controller="Volunteer"
@@ -236,6 +262,7 @@
                         </li>
 
 
+                        <!-- Contact -->
                         <li>
 
                             <a asp-controller="Home"
@@ -246,6 +273,22 @@
                             </a>
 
                         </li>
+
+
+                        <!-- Employee Portal -->
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li>
+
+                                <a asp-controller="Employee"
+                                   asp-action="Index">
+
+                                    Employee Portal
+
+                                </a>
+
+                            </li>
+                        }
 
                     </ul>
 

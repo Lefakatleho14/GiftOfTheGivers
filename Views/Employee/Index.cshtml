@@ -1,217 +1,126 @@
 ﻿@{
-    ViewData["Title"] = "Employee Dashboard";
+    ViewData["Title"] = "Employee Portal";
 }
 
-<div class="container">
+<div class="container section">
 
-    <div class="dashboard-header">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
 
-        <div class="hero-eyebrow text-danger">
-            RELIEF OPERATIONS
-        </div>
+            <div class="mb-5">
 
-        <h1>
-            Employee dashboard
-        </h1>
-
-        <p class="text-muted mb-0">
-            Monitor donations, volunteers and humanitarian
-            activity from one place.
-        </p>
-
-    </div>
-
-    <div class="row g-3 mb-4">
-
-        <div class="col-md-6 col-xl-3">
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Donations
+                <div class="hero-eyebrow text-success">
+                    EMPLOYEE PORTAL
                 </div>
 
-                <div class="stat-value">
-                    R @ViewBag.TotalDonations.ToString("N0")
-                </div>
+                <h1 class="section-heading mt-2">
+                    Relief operations
+                </h1>
 
-                <div class="small status-success mt-2">
-                    Total recorded
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-6 col-xl-3">
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Donation records
-                </div>
-
-                <div class="stat-value">
-                    @ViewBag.DonationCount
-                </div>
-
-                <div class="small text-muted mt-2">
-                    Recorded donations
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-6 col-xl-3">
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Volunteers
-                </div>
-
-                <div class="stat-value">
-                    @ViewBag.VolunteerCount
-                </div>
-
-                <div class="small text-muted mt-2">
-                    Applications received
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-6 col-xl-3">
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Relief updates
-                </div>
-
-                <div class="stat-value">
-                    @ViewBag.ReliefUpdateCount
-                </div>
-
-                <div class="small text-muted mt-2">
-                    Published updates
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="row g-4">
-
-        <div class="col-lg-8">
-
-            <div class="gotg-card">
-
-                <div class="d-flex justify-content-between
-                            align-items-center mb-4">
-
-                    <div>
-                        <h5 class="mb-1">
-                            Recent volunteer sign-ups
-                        </h5>
-
-                        <p class="text-muted mb-0">
-                            Latest people who registered their interest.
-                        </p>
-                    </div>
-
-                    <a asp-action="Volunteers"
-                       class="btn btn-outline-dark btn-sm">
-
-                        View all
-
-                    </a>
-
-                </div>
-
-                <div class="table-responsive">
-
-                    <table class="table align-middle">
-
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Skills</th>
-                                <th>Availability</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                            @foreach (var volunteer
-                                                        in ViewBag.RecentVolunteers)
-                            {
-                                <tr>
-
-                                    <td class="fw-semibold">
-                                        @volunteer.Name
-                                    </td>
-
-                                    <td>
-                                        @volunteer.Skills
-                                    </td>
-
-                                    <td>
-                                        @volunteer.Availability
-                                    </td>
-
-                                </tr>
-                            }
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-lg-4">
-
-            <div class="gotg-card">
-
-                <h5>
-                    Quick actions
-                </h5>
-
-                <p class="text-muted">
-                    Common employee tasks.
+                <p class="section-description">
+                    Manage humanitarian relief activity and review
+                    community participation from one place.
                 </p>
 
-                <div class="d-grid gap-2">
+            </div>
 
-                    <a asp-action="Volunteers"
-                       class="btn btn-gotg">
+            <div class="row g-4">
 
-                        View volunteer sign-ups
+                <div class="col-md-6">
 
-                    </a>
+                    <div class="gotg-card h-100">
 
-                    <a asp-controller="Home"
-                       asp-action="Index"
-                       class="btn btn-outline-dark">
+                        <div class="mb-4">
+                            <div class="stat-label">
+                                RELIEF MANAGEMENT
+                            </div>
 
-                        View public site
+                            <h3 class="mt-2">
+                                Relief updates
+                            </h3>
+                        </div>
 
-                    </a>
+                        <p class="text-muted">
+                            Publish updates about ongoing humanitarian
+                            relief projects and keep supporters informed
+                            about current activities.
+                        </p>
+
+                        <button class="btn btn-outline-dark mt-3"
+                                disabled>
+                            Coming in Phase 3
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="gotg-card h-100">
+
+                        <div class="mb-4">
+                            <div class="stat-label">
+                                COMMUNITY SUPPORT
+                            </div>
+
+                            <h3 class="mt-2">
+                                Volunteer applications
+                            </h3>
+                        </div>
+
+                        <p class="text-muted">
+                            Review volunteer applications and identify
+                            people who have offered their skills and
+                            availability to support relief activities.
+                        </p>
+
+                        <button class="btn btn-outline-dark mt-3"
+                                disabled>
+                            Coming in Phase 3
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="gotg-card mt-4">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-8">
+
+                        <div class="stat-label">
+                            CURRENT SESSION
+                        </div>
+
+                        <h4 class="mt-2">
+                            Employee access verified
+                        </h4>
+
+                        <p class="text-muted mb-0">
+                            You are signed in with Employee privileges.
+                            Employee-only functionality will be added
+                            in the next development phase.
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4 text-md-end mt-4 mt-md-0">
+
+                        <span class="badge bg-success px-3 py-2">
+                            Employee
+                        </span>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
     </div>
 
 </div>

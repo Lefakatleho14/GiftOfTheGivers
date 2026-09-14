@@ -16,8 +16,8 @@ namespace GiftOfTheGivers.Data
 
             string[] roles =
             {
-                "Employee",
-                "Donor"
+                "Donor",
+                "Employee"
             };
 
             foreach (var role in roles)
@@ -29,7 +29,8 @@ namespace GiftOfTheGivers.Data
                 }
             }
 
-            var employeeEmail = "employee@giftgivers.local";
+            // Development employee account
+            var employeeEmail = "employee@giftofthegivers.local";
 
             var employee =
                 await userManager.FindByEmailAsync(employeeEmail);
@@ -41,19 +42,27 @@ namespace GiftOfTheGivers.Data
                     UserName = employeeEmail,
                     Email = employeeEmail,
                     EmailConfirmed = true,
-                    FullName = "Relief Coordinator"
+                    FullName = "Gift of the Givers Employee"
                 };
 
                 var result = await userManager.CreateAsync(
                     employee,
-                    "Employee123!");
+                    "Employee123");
 
-                if (result.Succeeded)
+                if (!result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(
-                        employee,
-                        "Employee");
+                    throw new Exception(
+                        "Failed to create the development employee account.");
                 }
+            }
+
+            if (!await userManager.IsInRoleAsync(
+                    employee,
+                    "Employee"))
+            {
+                await userManager.AddToRoleAsync(
+                    employee,
+                    "Employee");
             }
         }
     }
