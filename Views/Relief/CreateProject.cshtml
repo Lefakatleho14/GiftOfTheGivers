@@ -1,0 +1,151 @@
+﻿@model GiftOfTheGivers.ViewModels.ReliefProjectViewModel
+
+@{
+    ViewData["Title"] = "Create Relief Project";
+}
+
+<div class="container section">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="mb-4">
+
+                <div class="hero-eyebrow text-success">
+                    RELIEF MANAGEMENT
+                </div>
+
+                <h1 class="section-heading mt-2">
+                    Create relief project
+                </h1>
+
+                <p class="section-description">
+                    Add an ongoing humanitarian relief project
+                    to the system.
+                </p>
+
+            </div>
+
+
+            <form asp-action="CreateProject"
+                  method="post"
+                  class="gotg-form">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control"
+                           placeholder="e.g. KwaZulu-Natal Flood Relief" />
+
+                    <span asp-validation-for="Name"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="Location"
+                           class="form-label">
+                    </label>
+
+                    <input asp-for="Location"
+                           class="form-control"
+                           placeholder="e.g. Durban, KwaZulu-Natal" />
+
+                    <span asp-validation-for="Location"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label asp-for="Description"
+                           class="form-label">
+                    </label>
+
+                    <textarea asp-for="Description"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Describe the relief project...">
+                    </textarea>
+
+                    <span asp-validation-for="Description"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="Status"
+                           class="form-label">
+                    </label>
+
+                    <select asp-for="Status"
+                            class="form-select">
+
+                        <option value="Ongoing">
+                            Ongoing
+                        </option>
+
+                        <option value="Planning">
+                            Planning
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Status"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-gotg">
+
+                        Create Project
+
+                    </button>
+
+                    <a asp-action="Projects"
+                       class="btn btn-outline-dark">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -7,16 +7,19 @@ namespace GiftOfTheGivers.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(150)]
-        public string Title { get; set; } = string.Empty;
+        public string EmployeeId { get; set; } = string.Empty;
+
+        public ApplicationUser? Employee { get; set; }
 
         [Required]
-        public string Description { get; set; } = string.Empty;
+        public int ReliefProjectId { get; set; }
 
-        public string? Location { get; set; }
+        public ReliefProject? ReliefProject { get; set; }
 
-        public DateTime PublishedAt { get; set; } = DateTime.UtcNow;
+        [Required]
+        [StringLength(2000)]
+        public string Content { get; set; } = string.Empty;
 
-        public string? EmployeeId { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

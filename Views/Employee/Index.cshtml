@@ -18,101 +18,70 @@
                 </h1>
 
                 <p class="section-description">
-                    Manage humanitarian relief activity and review
-                    community participation from one place.
+                    Manage ongoing humanitarian relief activities
+                    and keep the community informed.
                 </p>
 
             </div>
 
             <div class="row g-4">
 
+                <!-- Relief Projects -->
                 <div class="col-md-6">
 
                     <div class="gotg-card h-100">
-
-                        <div class="mb-4">
-                            <div class="stat-label">
-                                RELIEF MANAGEMENT
-                            </div>
-
-                            <h3 class="mt-2">
-                                Relief updates
-                            </h3>
-                        </div>
-
-                        <p class="text-muted">
-                            Publish updates about ongoing humanitarian
-                            relief projects and keep supporters informed
-                            about current activities.
-                        </p>
-
-                        <button class="btn btn-outline-dark mt-3"
-                                disabled>
-                            Coming in Phase 3
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="gotg-card h-100">
-
-                        <div class="mb-4">
-                            <div class="stat-label">
-                                COMMUNITY SUPPORT
-                            </div>
-
-                            <h3 class="mt-2">
-                                Volunteer applications
-                            </h3>
-                        </div>
-
-                        <p class="text-muted">
-                            Review volunteer applications and identify
-                            people who have offered their skills and
-                            availability to support relief activities.
-                        </p>
-
-                        <button class="btn btn-outline-dark mt-3"
-                                disabled>
-                            Coming in Phase 3
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="gotg-card mt-4">
-
-                <div class="row align-items-center">
-
-                    <div class="col-md-8">
 
                         <div class="stat-label">
-                            CURRENT SESSION
+                            RELIEF MANAGEMENT
                         </div>
 
-                        <h4 class="mt-2">
-                            Employee access verified
-                        </h4>
+                        <h3 class="mt-2">
+                            Relief projects
+                        </h3>
 
-                        <p class="text-muted mb-0">
-                            You are signed in with Employee privileges.
-                            Employee-only functionality will be added
-                            in the next development phase.
+                        <p class="text-muted mt-3">
+                            View current relief projects, their locations,
+                            descriptions and progress.
                         </p>
+
+                        <a asp-controller="Relief"
+                           asp-action="Projects"
+                           class="btn btn-gotg mt-3">
+
+                            View Relief Projects
+
+                        </a>
 
                     </div>
 
-                    <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                </div>
 
-                        <span class="badge bg-success px-3 py-2">
-                            Employee
-                        </span>
+
+                <!-- Relief Updates -->
+                <div class="col-md-6">
+
+                    <div class="gotg-card h-100">
+
+                        <div class="stat-label">
+                            COMMUNITY COMMUNICATION
+                        </div>
+
+                        <h3 class="mt-2">
+                            Post relief update
+                        </h3>
+
+                        <p class="text-muted mt-3">
+                            Publish an update about an ongoing
+                            humanitarian relief project.
+                        </p>
+
+                        <a asp-controller="Relief"
+                           asp-action="CreateUpdate"
+                           class="btn btn-outline-dark mt-3">
+
+                            Post Update
+
+                        </a>
 
                     </div>
 

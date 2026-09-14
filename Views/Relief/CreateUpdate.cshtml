@@ -1,0 +1,134 @@
+﻿@model GiftOfTheGivers.ViewModels.ReliefUpdateViewModel
+
+@{
+    ViewData["Title"] = "Post Relief Update";
+
+    var projects =
+        ViewBag.Projects as
+        IEnumerable<GiftOfTheGivers.Models.ReliefProject>;
+}
+
+<div class="container section">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="mb-4">
+
+                <div class="hero-eyebrow text-success">
+                    RELIEF COMMUNICATION
+                </div>
+
+                <h1 class="section-heading mt-2">
+                    Post relief update
+                </h1>
+
+                <p class="section-description">
+                    Share a progress update about an ongoing
+                    humanitarian relief project.
+                </p>
+
+            </div>
+
+
+            <form asp-action="CreateUpdate"
+                  method="post"
+                  class="gotg-form">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="ReliefProjectId"
+                           class="form-label">
+                    </label>
+
+                    <select asp-for="ReliefProjectId"
+                            class="form-select">
+
+                        <option value="">
+                            Select a relief project
+                        </option>
+
+                        @if (projects != null)
+                        {
+                            foreach (var project in projects)
+                            {
+                                <option value="@project.Id">
+                                    @project.Name -
+                                    @project.Location
+                                </option>
+                            }
+                        }
+
+                    </select>
+
+                    <span asp-validation-for="ReliefProjectId"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label asp-for="Content"
+                           class="form-label">
+                    </label>
+
+                    <textarea asp-for="Content"
+                              class="form-control"
+                              rows="7"
+                              placeholder="Describe the latest relief activity...">
+                    </textarea>
+
+                    <span asp-validation-for="Content"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <div class="alert alert-secondary">
+
+                    <strong>Employee update:</strong>
+
+                    Your name and the date of this update will be
+                    recorded automatically.
+
+                </div>
+
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-gotg">
+
+                        Publish Update
+
+                    </button>
+
+                    <a asp-action="Projects"
+                       class="btn btn-outline-dark">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

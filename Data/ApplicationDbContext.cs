@@ -13,17 +13,20 @@ namespace GiftOfTheGivers.Data
         {
         }
 
-        // Donations
         public DbSet<Donation> Donations { get; set; }
 
-        // Volunteer applications
         public DbSet<VolunteerApplication> VolunteerApplications
         {
             get;
             set;
         }
 
-        // Relief project updates
+        public DbSet<ReliefProject> ReliefProjects
+        {
+            get;
+            set;
+        }
+
         public DbSet<ReliefUpdate> ReliefUpdates
         {
             get;
